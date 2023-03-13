@@ -1,0 +1,14 @@
+﻿<Shell xmlns="http://xamarin.com/schemas/2014/forms"
+       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+       xmlns:views="clr-namespace:Course_Scheduler_App_Felix_Berinde.Views;assembly=Course_Scheduler_App_Felix_Berinde"
+       x:Class="Course_Scheduler_App_Felix_Berinde.AppShell">
+
+    <FlyoutItem Title="AboutPage" Icon="icon_about.png">
+        <ShellContent Route="AboutPage" ContentTemplate="{DataTemplate views:AboutPage}" />
+    </FlyoutItem>
+
+    <FlyoutItem Title="WidgetsPage" Icon="icon_feed.png">
+        <ShellContent Route="WidgetsPage" ContentTemplate="{DataTemplate views:WidgetsPage}" />
+    </FlyoutItem>
+
+</Shell>
