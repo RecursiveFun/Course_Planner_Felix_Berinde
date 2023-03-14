@@ -1,8 +1,9 @@
 ﻿using System;
+using Course_Planner_Felix_Berinde.Views;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace Course_Scheduler_App_Felix_Berinde
+namespace Course_Planner_Felix_Berinde
 {
     public partial class App : Application
     {
@@ -10,7 +11,9 @@ namespace Course_Scheduler_App_Felix_Berinde
         {
             InitializeComponent();
 
-            MainPage = new AppShell();
+            var dashBoard = new Dashboard();
+            var navPage = new NavigationPage(dashBoard);
+            MainPage = navPage;
         }
 
         protected override void OnStart()
