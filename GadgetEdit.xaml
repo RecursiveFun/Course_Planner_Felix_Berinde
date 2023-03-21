@@ -1,0 +1,138 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Course_Planner_Felix_Berinde.Views.GadgetEdit"
+             Title="Edit/Delete Gadget">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Save" x:Name="SaveGadget" Clicked="SaveGadget_OnClicked"></ToolbarItem>
+        <ToolbarItem Text="Cancel" x:Name="CancelGadget" Clicked="CancelGadget_OnClicked"></ToolbarItem>
+        <ToolbarItem Text="Delete" x:Name="Delete" Clicked="Delete_OnClicked"></ToolbarItem>
+    </ContentPage.ToolbarItems>
+
+    <ContentPage.Content>
+        <StackLayout>
+            <Grid Padding="5" RowSpacing="1" ColumnSpacing="1" BackgroundColor="WhiteSmoke">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+
+                <Label Grid.Row ="0" Grid.Column="0" FontSize="Medium" VerticalTextAlignment="Center">ID</Label>
+                <Entry Text="{Binding Id}" x:Name="GadgetId" Placeholder="Enter Gadget Name" Grid.Row="0" Grid.Column="1" VerticalTextAlignment="Center" IsReadOnly="True"></Entry>
+
+                <Label Grid.Row ="1" Grid.Column="0" FontSize="Medium" VerticalTextAlignment="Center">ID</Label>
+                <Entry Text="{Binding Name}" x:Name="GadgetName" Placeholder="Enter Gadget Name" Grid.Row="1" Grid.Column="1" VerticalTextAlignment="Center" IsReadOnly="True"></Entry>
+
+                <Label Grid.Row ="2" Grid.Column="0" FontSize="Medium" VerticalTextAlignment="Center">Color</Label>
+                <Picker Grid.Row="2" Grid.Column="1" FontSize="Medium" x:Name="GadgetColorPicker"
+                        Title="Select a Color"
+                        TitleColor="Teal">
+                    <Picker.Items>
+                        <x:String>Aqua</x:String>
+                        <x:String>Black</x:String>
+                        <x:String>Blue</x:String>
+                        <x:String>Goldenrod</x:String>
+                        <x:String>Green</x:String>
+                        <x:String>Indigo</x:String>
+                        <x:String>Pink</x:String>
+                        <x:String>Teal</x:String>
+                        <x:String>White</x:String>
+                        <x:String>Yellow</x:String>
+                    </Picker.Items>
+                </Picker>
+
+                <Label Grid.Row ="3" Grid.Column="0" FontSize="Medium" VerticalTextAlignment="Center">Stock</Label>
+                <Entry Text="{Binding InStock}" x:Name="GadgetsInStock" Placeholder="Enter Number of Gadgets in stock" Grid.Row="4" Grid.Column="1" VerticalTextAlignment="Center"></Entry>
+
+                <Label Grid.Row ="4" Grid.Column="0" FontSize="Medium" VerticalTextAlignment="Center">Price</Label>
+                <Entry Text="{Binding Price}" x:Name="GadgetPrice" Placeholder="Enter Gadget Price" Grid.Row="4" Grid.Column="1" VerticalTextAlignment="Center"></Entry>
+
+                <Label Grid.Row="5" Grid.Column="0" FontSize="Medium" VerticalTextAlignment="Center">Creation Date</Label>
+                <DatePicker Grid.Row="5" Grid.Column="1" x:Name="CreationDatePicker"></DatePicker>
+            </Grid>
+
+            <!--#region Button and Labels -->
+                
+                <Button x:Name="AddWidget" Text="Add Widget" Clicked="AddWidget_OnClicked"></Button>
+                <Label Text="Widget Count" FontSize="Large"></Label>
+                <Label x:Name="CountLabel" FontSize="Large"></Label>
+                <Label x:Name="LabelList" Text="List of Widgets" FontSize="Medium" FontAttributes="Bold"></Label>
+                <Label Text="____________________________________"></Label>
+
+            <!--#endregion Button and Labels -->
+
+
+            <!-- Display Widget in a list. -->
+            <CollectionView x:Name="WidgetCollectionView"
+                            ItemsSource="{Binding Widgets}"
+                            EmptyView="No Widgets to display."
+                            SelectionMode="Single"
+                            SelectionChanged="WidgetCollectionView_OnSelectionChanged">
+                
+                <CollectionView.ItemsLayout>
+                    <LinearItemsLayout Orientation="Vertical"
+                                       ItemSpacing="10"/>
+                </CollectionView.ItemsLayout>
+            
+            <!-- Define the appearance of each item in the list -->
+            <CollectionView.ItemTemplate>
+
+                <DataTemplate>
+                    <StackLayout>
+                        <Grid Padding="5" RowSpacing="1" ColumnSpacing="22" BackgroundColor="WhiteSmoke">
+                            
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+
+                            <Label Grid.Row="0" Grid.Column="0" FontSize="Medium" VerticalTextAlignment="Center" FontAttributes="Bold">Name</Label>
+                            <Label Text="{Binding Name}"
+                                   FontSize="Medium" Grid.Row="0" Grid.Column="1" VerticalTextAlignment="Center" />
+
+                            <Label Grid.Row="1" Grid.Column="0" FontSize="Medium" VerticalTextAlignment="Center" FontAttributes="Bold">Color</Label>
+                            <Label Text="{Binding Color}"
+                                   FontSize="Medium" Grid.Row="1" Grid.Column="1" VerticalTextAlignment="Center"/>
+
+                            <Label Grid.Row="2" Grid.Column="0" FontSize="Medium" VerticalTextAlignment="Center" FontAttributes="Bold">Stock</Label>
+                            <Label Grid.Row="2" Grid.Column="1" Text="{Binding Stock}" 
+                                   FontSize="Medium" VerticalTextAlignment="Center"/>
+
+                            <Label Grid.Row="3" Grid.Column="0" FontSize="Medium" VerticalTextAlignment="Center" FontAttributes="Bold">Price</Label>
+                            <Label Grid.Row="3" Grid.Column="1" Text="{Binding Price}" 
+                                   FontSize="Medium" VerticalTextAlignment="Center"/>
+
+                                <Label Grid.Row="5" Grid.Column="0" FontSize="Medium" VerticalTextAlignment="Center" FontAttributes="Bold">Gadget Id</Label>
+                            <Label Grid.Row="5" Grid.Column="1" Text="{Binding GadgetId}" 
+                                   FontSize="Medium" VerticalTextAlignment="Center"/>
+
+                            </Grid>
+
+                    </StackLayout>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+
+            </CollectionView>
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
