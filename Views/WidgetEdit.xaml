@@ -1,0 +1,83 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Course_Planner_Felix_Berinde.Views.WidgetEdit"
+             Title ="Edit/Delete Widget">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem x:Name="SaveWidget" Text="Save" Clicked="SaveWidget_OnClicked"></ToolbarItem>
+        <ToolbarItem x:Name="CancelWidget" Text="Cancel" Clicked="CancelWidget_OnClicked"></ToolbarItem>
+        <ToolbarItem x:Name="DeleteWidget" Text="Delete" Clicked="DeleteWidget_OnClicked"></ToolbarItem>
+    </ContentPage.ToolbarItems>
+
+    <ContentPage.Content>
+        <StackLayout>
+            <Grid Padding="5" RowSpacing="1" ColumnSpacing="1" BackgroundColor="WhiteSmoke">
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+
+                <Label Grid.Row="0" Grid.Column="0" FontSize="Medium" VerticalTextAlignment="Center">ID</Label>
+                <Entry Text="{Binding Id}" x:Name="WidgetId" Placeholder="#" Grid.Row="0" Grid.Column="1" VerticalTextAlignment="Center" IsReadOnly="True"></Entry>
+
+                <Label Grid.Row="1" Grid.Column="0" FontSize="Medium" VerticalTextAlignment="Center">Name</Label>
+                <Entry Text="{Binding Name}" x:Name="WidgetName" Placeholder="Enter Widget Name" Grid.Row="1" Grid.Column="1" VerticalTextAlignment="Center"></Entry>
+
+                <Label Grid.Row="2" Grid.Column="0" FontSize="Medium" VerticalTextAlignment="Center">Color</Label>
+                <Picker Grid.Row="2" Grid.Column="1" FontSize="Medium" x:Name="WidgetColorPicker" Title="Select a Color" TitleColor="Teal">
+                    <Picker.ItemsSource>
+                        <x:Array Type="{x:Type x:String}">
+                            <x:String>Aqua</x:String>
+                            <x:String>Black</x:String>
+                            <x:String>Blue</x:String>
+                            <x:String>GoldenRod</x:String>
+                            <x:String>Green</x:String>
+                            <x:String>Indigo</x:String>
+                            <x:String>Pink</x:String>
+                            <x:String>Teal</x:String>
+                            <x:String>White</x:String>
+                            <x:String>Yellow</x:String>
+                        </x:Array>
+                    </Picker.ItemsSource>
+                </Picker>
+
+                <Label Grid.Row="3" Grid.Column="0" FontSize="Medium" VerticalTextAlignment="Center">Stock</Label>
+                <Entry Grid.Row="3" Grid.Column="1" x:Name="WidgetsInStock" Placeholder="Enter number of Widgets in stock"></Entry>
+
+                <Label Grid.Row="4" Grid.Column="0" FontSize="Medium" VerticalTextAlignment="Center">Price</Label>
+                <Entry Grid.Row="4" Grid.Column="1" x:Name="WidgetPrice" Placeholder="Enter Widget Price"></Entry>
+
+                <Label Grid.Row="5" Grid.Column="0" FontSize="Medium" VerticalTextAlignment="Center">Creation Date</Label>
+                <DatePicker Grid.Row="5" Grid.Column="1" x:Name="CreationDatePicker"></DatePicker>
+
+                <Label Grid.Row="6" Grid.Column="0" VerticalTextAlignment="Center">Notes</Label>
+                <Editor Grid.Row="6" Grid.Column="1" x:Name="NotesEditor" Placeholder="Enter notes here."></Editor>
+
+                <Label Grid.Row="7" Grid.Column="0" VerticalTextAlignment="Center">Share</Label>
+                <Button Grid.Row="7" Grid.Column="1" FontSize="Medium" VerticalOptions="Center" Text="Share" Font="Medium" x:Name="ShareButton" Clicked="ShareButton_OnClicked"></Button>
+
+                <Label Grid.Row="8" Grid.Column="0" VerticalTextAlignment="Center">Share</Label>
+                <Button Grid.Row="8" Grid.Column="1" FontSize="Medium" VerticalOptions="Center" Text="Share URI" Font="Medium" x:Name="ShareURI" Clicked="ShareURI_OnClicked"></Button>
+
+                <Label Grid.Row="9" Grid.Column="0" Text="Notify" FontSize="Medium"/>
+                <Switch Grid.Row="9" Grid.Column="1" x:Name="Notification" HorizontalOptions="End" IsToggled="True" VerticalOptions="Center"/>
+
+            </Grid>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
